@@ -1,6 +1,0 @@
-Flask==2.0.1
-Flask-SQLAlchemy==2.5.1
-Flask-JWT-Extended==4.2.3
-Flask-Cors==3.0.10
-transformers==4.8.2
-Pillow==8.3.1
