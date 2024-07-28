@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 
@@ -7,14 +8,24 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState("");
+
+  const handleLogin = () => {
+    user.login(email, password)
+        .catch(() => {
+          setError("Invalid email or password");
+        });
+  };
+
   return (
     <section>
-      <h1>Login or register</h1>
-      <form>
+      <form className="accountForm">
+        <h1>Login</h1>
         <input
           type="email"
           placeholder="Email"
           value={email}
+          required
           onChange={(event) => {
             setEmail(event.target.value);
           }}
@@ -23,6 +34,7 @@ export function Login() {
           type="password"
           placeholder="Password"
           value={password}
+          required
           onChange={(event) => {
             setPassword(event.target.value);
           }}
@@ -31,17 +43,16 @@ export function Login() {
           <button
             className="button"
             type="button"
-            onClick={() => user.login(email, password)}
+            onClick={handleLogin}
           >
             Login
           </button>
-          <button
-            className="button"
-            type="button"
-            onClick={() => user.register(email, password)}
-          >
-            Register
-          </button>
+        </div>
+        <div className="error">
+        {error}</div>
+        <div className="formInfo">
+          <p>Need to sign up?</p>
+          <a href="/src/pages/Signup.jsx">Sign Up Here</a>
         </div>
       </form>
     </section>

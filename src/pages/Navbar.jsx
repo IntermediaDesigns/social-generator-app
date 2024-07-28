@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { useUser } from "../lib/context/user";
 
 export default function Navbar() {
@@ -6,14 +7,13 @@ export default function Navbar() {
 
   return (
     <nav>
-      <a className="homeLink" href="/">
+      <Link className="homeLink" to="/">
         <img
           className="navImg"
           src={process.env.PUBLIC_URL + "/logo.png"}
           alt="logo"
         />
-      </a>
-
+      </Link>
       <div>
         {user.current ? (
           <button className="navBtn" onClick={user.logout}>
@@ -21,12 +21,12 @@ export default function Navbar() {
           </button>
         ) : (
           <div className="navLinks">
-            <a href="/login">
+            <Link to="/login">
               <button className="navBtn">Login</button>
-            </a>
-            <a href="/signup">
+            </Link>
+            <Link to="/signup">
               <button className="navBtn">Sign Up</button>
-            </a>
+            </Link>
           </div>
         )}
       </div>

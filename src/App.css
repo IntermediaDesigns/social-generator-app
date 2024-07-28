@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: transparent;
 }
 
@@ -43,8 +43,6 @@ nav {
   background: linear-gradient(to top, #ad5389, #3c1053);
   cursor: pointer;
 }
-
-
 
 .homeLink {
   background: transparent;
@@ -105,8 +103,9 @@ nav {
 }
 
 .homeImg {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.582);
   border-radius: 5px;
 }
@@ -127,4 +126,88 @@ nav {
   background: transparent;
 }
 
-/* Login page */
+/* Login/Sign Up page */
+
+.accountForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ad5389;
+}
+
+.accountForm h1 {
+  font-size: 2rem;
+  color: white;
+  background: transparent;
+}
+
+.accountForm input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid rgb(54, 0, 52);
+  background: white;
+}
+
+.accountForm button {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: #71306d;
+  border: 2px solid rgb(54, 0, 52);
+}
+
+.accountForm button:hover {
+  color: rgb(6, 223, 212);
+  transform: scale(1.1);
+  transition: 0.3s;
+  background: #3c1053;
+  cursor: pointer;
+}
+
+.accountForm p {
+  font-size: 1rem;
+  color: white;
+}
+
+.formInfo {
+  display: flex;
+  gap: 10px;
+  background: transparent;
+}
+
+.formInfo p {
+  font-size: 1rem;
+  color: white;
+  background: transparent;
+}
+
+.formInfo a {
+  font-size: 1rem;
+  color: #3c1053;
+  background: transparent;
+  text-decoration: none;
+}
+
+.formInfo a:hover {
+  color: #06dfd4;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  background: transparent;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
