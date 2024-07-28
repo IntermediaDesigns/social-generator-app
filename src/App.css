@@ -28,19 +28,21 @@ nav {
   border-radius: 5px;
   padding: 0.5rem 1rem;
   font-size: 2rem;
-  transition: 0.3s;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .navBtn:hover {
   color: rgb(6, 223, 212);
   transform: scale(1.1);
-  background-color: transparent;
+  transition: 0.3s;
+  background: linear-gradient(to top, #ad5389, #3c1053);
   cursor: pointer;
 }
 
+
+
 .homeLink {
-  background-color: transparent;
+  background: transparent;
 }
 
 .navImg {

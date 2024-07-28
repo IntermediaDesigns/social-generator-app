@@ -15,9 +15,11 @@ export default function Navbar() {
             Logout
           </button>
         ) : (
-          <button className="navBtn" href="/login">
-            Login
-          </button>
+          <a href="/login">
+            <button className="navBtn">
+              Login
+            </button>
+          </a>
         )}
       </div>
     </nav>
