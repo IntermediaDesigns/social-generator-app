@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(to top, #ad5389, #3c1053);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: transparent;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  background: transparent;
+}
+
+.navBtn {
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.navBtn:hover {
+  color: rgb(6, 223, 212);
+  transform: scale(1.1);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.homeLink {
+  background-color: transparent;
+}
+
+.navImg {
+  width: 80px;
+  height: 80px;
+  background: transparent;
+}
+
+.navImg:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+  background: transparent;
+}

@@ -4,6 +4,7 @@ import { IdeasProvider } from "./lib/context/ideas";
 import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import Navbar from './pages/Navbar';
+import './App.css';
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
