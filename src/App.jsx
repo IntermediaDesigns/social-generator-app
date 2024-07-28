@@ -1,27 +1,27 @@
-import React from 'react';
-import { UserProvider, useUser } from "./lib/context/user";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { UserProvider } from "./lib/context/user";
 import { IdeasProvider } from "./lib/context/ideas";
-import { Login } from './pages/Login';
-import { Home } from './pages/Home';
-import Navbar from './pages/Navbar';
-import './App.css';
-import { Signup } from './pages/Signup';
+import { Home } from "./pages/Home";
+import Navbar from "./pages/Navbar";
+import { Login } from "./pages/Login"; // Change this line
+import { Signup } from "./pages/Signup"; // Change this line
+import "./App.css";
 
 function App() {
-  const isLoginPage = window.location.pathname === "/login";
-  const isSignupPage = window.location.pathname === "/signup";
-
   return (
-    <div>
+    <Router>
       <UserProvider>
         <IdeasProvider>
-          <Navbar /> {/* Add the navbar before page content */}
-          {/* <Home /> */}
-          <main>{isLoginPage ? <Login /> : <Home />}</main>
-          <main>{isSignupPage ? <Signup /> : <Home />}</main>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
         </IdeasProvider>
       </UserProvider>
-    </div>
+    </Router>
   );
 }
 
