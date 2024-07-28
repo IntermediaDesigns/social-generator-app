@@ -218,3 +218,29 @@ nav {
   font-size: 1.5rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.redirectModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: #ad5389;
+}
+
+.redirectModal h1 {
+  font-size: 2rem;
+  color: white;
+  background: transparent;
+}
+
+.redirectModal p {
+  font-size: 1.5rem;
+  color: white;
+  background: transparent;
+}

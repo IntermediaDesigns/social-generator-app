@@ -1,10 +1,13 @@
-import React from "react";
-import { useState } from "react";
-import { useUser } from "../lib/context/user";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useUser } from "../lib/context/userData";
+import { Link } from "react-router-dom";
 
 export function Signup() {
-  const user = useUser();
+  const userContext = useUser();
+  if (!userContext) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  const { register } = userContext;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,61 +16,39 @@ export function Signup() {
   const [error, setError] = useState("");
 
   const handleSignup = () => {
-    user.register(name, email, password)
-        .catch(() => {
-          setError("Must complete all fields. Check your email and password.");
-        }
-        );
-  }
+    register(name, email, password).catch(() => {
+      setError("Must complete all fields. Check your email and password.");
+    });
+  };
 
   return (
     <section>
       <form className="accountForm">
-      <h1>Sign Up</h1>
+        <h1>Sign Up</h1>
         <input
           type="text"
           placeholder="Name"
           value={name}
           required
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
           required
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           required
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <div>
-          <button
-            className="button"
-            type="button"
-            onClick={handleSignup}
-          >
-            Sign Up
-          </button>
-        </div>
-        <div className="error">
-        {error}</div>
-        <div className="formInfo">
-          <p>Already have an account?</p>
-          <Link to="/login">Login</Link>
-        </div>
+        <button type="button" onClick={handleSignup}>Sign Up</button>
+        {error && <p>{error}</p>}
       </form>
     </section>
   );
 }
-

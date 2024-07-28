@@ -1,32 +1,46 @@
 import React, { useState } from "react";
-import { useUser } from "../lib/context/user";
+import { useNavigate } from "react-router-dom";
+import { account } from "../lib/appwrite"; // Adjust the import path as needed
 
-export default function RecoverPW() {
-  const { recover } = useUser();
+function RecoverPW() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const handleRecover = () => {
-    recover(email).catch(() => {
-      setError("Invalid email");
-    });
+  const handleRecover = async () => {
+    const url = `${window.location.origin}/redirect`; // Redirect URL
+    try {
+      await account.createRecovery(email, url);
+      console.log(`Recovering password for ${email}`);
+      navigate("/redirect");
+    } catch (error) {
+      console.error(`Failed to recover password for ${email}:`, error);
+      setError("Invalid email or password");
+    }
   };
 
   return (
     <section>
-      <form className="accountForm" onSubmit={(e) => { e.preventDefault(); handleRecover(); }}>
+      <form
+        className="accountForm"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleRecover();
+        }}
+      >
         <h1>Recover Password</h1>
-        <p>Enter your email address to recover your password.</p>
+        <p>Enter your email to recover your password</p>
         <input
           type="email"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
+          placeholder="Enter your email"
         />
-        <button type="submit">Recover</button>
-        {error && <div className="error">{error}</div>}
+        <button type="submit">Recover Password</button>
+        <div>{error && <p className="error">{Error}</p>}</div>
       </form>
     </section>
   );
 }
+
+export default RecoverPW;

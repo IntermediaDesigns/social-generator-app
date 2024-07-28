@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useUser } from "../lib/context/user";
+import { useUser } from "../lib/context/userData";
 import { Link } from 'react-router-dom';
 
 export function Login() {
@@ -11,11 +11,25 @@ export function Login() {
 
   const [error, setError] = useState("");
 
+  const isValidUserId = (userId) => {
+    const userIdRegex = /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,35}$/;
+    return userIdRegex.test(userId);
+  };
+
   const handleLogin = () => {
-    user.login(email, password)
+    if (!isValidUserId(email)) {
+      setError("Invalid email address");
+      return;
+    }
+
+    if (user && user.login) {
+      user.login(email, password)
         .catch(() => {
           setError("Invalid email or password");
         });
+    } else {
+      setError("User context is not available");
+    }
   };
 
   return (

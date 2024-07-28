@@ -6,13 +6,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.create("[USER_ID]", "email@example.com", "");
-
-promise.then(
-  function (response) {
-    console.log(response); // Success
-  },
-  function (error) {
-    console.log(error); // Failure
-  }
+await account.create(
+  ID.unique(),
+  'Name',
+  'email@example.com',
+  'password'
 );
+

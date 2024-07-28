@@ -1,17 +1,16 @@
-import { useState } from "react";
-import { useUser } from "../lib/context/user";
-import { useIdeas } from "../lib/context/ideas";
+import { useUser } from "../lib/context/userData";
 
 export function Dashboard() {
-  const user = useUser();
-  const ideas = useIdeas();
+  const { user } = useUser();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-
-    return (
-      <div>
-        {/* Your JSX content here */}
-      </div>
-    );
-};
+  return (
+    <main>
+      <h1>Dashboard</h1>
+      {user && user.current ? (
+        <p>Welcome, {user.current.name}!</p>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </main>
+  );
+}

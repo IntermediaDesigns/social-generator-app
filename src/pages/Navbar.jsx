@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { useUser } from "../lib/context/user";
+import { useUser } from "../lib/context/userData";
 
 export default function Navbar() {
   const user = useUser();

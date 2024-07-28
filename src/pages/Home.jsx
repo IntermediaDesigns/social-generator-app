@@ -1,51 +1,22 @@
-import { useState } from "react";
 import { useUser } from "../lib/context/user";
-import { useIdeas } from "../lib/context/ideas";
+import { Dashboard } from "./Dashboard";
 
 export function Home() {
   const user = useUser();
-  const ideas = useIdeas();
-
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
 
   return (
     <>
-      {/* Show the submit form to logged in users. */}
-      {user.current ? (
-        <section>
-          <h2>Submit Idea</h2>
-          <form>
-            <input
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={(event) => {
-                setTitle(event.target.value);
-              }}
-            />
-            <textarea
-              placeholder="Description"
-              value={description}
-              onChange={(event) => {
-                setDescription(event.target.value);
-              }}
-            />
-            <button
-              type="button"
-              onClick={() =>
-                ideas.add({ userId: user.current.$id, title, description })
-              }
-            >
-              Submit
-            </button>
-          </form>
-        </section>
+      {user && user.current ? (
+        <Dashboard />
       ) : (
         <section className="homeHeader">
           <h1>Welcome to SnapCraft </h1>
           <p>Crafting Your Social Imagery</p>
-          <img className="homeImg" src={process.env.PUBLIC_URL + "/post.png"} alt="example" />
+          <img
+            className="homeImg"
+            src={process.env.PUBLIC_URL + "/post.png"}
+            alt="example"
+          />
           <div className="homeContent">
             <h2>🌟 Unleash the Power of AI with SnapCraft! 🌟</h2>
             <p>
