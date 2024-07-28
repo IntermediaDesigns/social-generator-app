@@ -1,19 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
+import { Link } from 'react-router-dom';
 
 export function Signup() {
   const user = useUser();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
 
   const handleSignup = () => {
-    user.register(email, password)
+    user.register(name, email, password)
         .catch(() => {
-          setError("Invalid email or password");
+          setError("Must complete all fields. Check your email and password.");
         }
         );
   }
@@ -22,6 +24,15 @@ export function Signup() {
     <section>
       <form className="accountForm">
       <h1>Sign Up</h1>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          required
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
+        />
         <input
           type="email"
           placeholder="Email"
@@ -53,7 +64,7 @@ export function Signup() {
         {error}</div>
         <div className="formInfo">
           <p>Already have an account?</p>
-          <a href="/src/pages/Login.jsx">Login</a>
+          <Link to="/login">Login</Link>
         </div>
       </form>
     </section>

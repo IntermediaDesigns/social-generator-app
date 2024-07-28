@@ -1,12 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from "./lib/context/user";
 import { IdeasProvider } from "./lib/context/ideas";
 import { Home } from "./pages/Home";
 import Navbar from "./pages/Navbar";
-import { Login } from "./pages/Login"; // Change this line
-import { Signup } from "./pages/Signup"; // Change this line
+import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
+import RecoverPW from "./pages/RecoverPW"; // Updated line
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
       <UserProvider>
         <IdeasProvider>
           <Navbar />
+          <RecoverPW />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

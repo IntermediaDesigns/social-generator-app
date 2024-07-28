@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
+import { Link } from 'react-router-dom';
 
 export function Login() {
   const user = useUser();
@@ -52,7 +53,11 @@ export function Login() {
         {error}</div>
         <div className="formInfo">
           <p>Need to sign up?</p>
-          <a href="/src/pages/Signup.jsx">Sign Up Here</a>
+          <Link to="/signup">Sign Up Here</Link>
+        </div>
+        <div className="formInfo">
+          <p>Forgot your password?</p>
+          <Link to="/recoverpw">Recover Password</Link>
         </div>
       </form>
     </section>

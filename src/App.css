@@ -142,6 +142,13 @@ nav {
   background: #ad5389;
 }
 
+.accountForm p {
+  font-size: 2rem;
+  color: #06dfd4 !important;
+  background: transparent;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.63) !important;
+}
+
 .accountForm h1 {
   font-size: 2rem;
   color: white;

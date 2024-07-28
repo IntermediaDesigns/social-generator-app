@@ -1,10 +1,12 @@
 import { HfInference } from "@huggingface/inference";
+require('dotenv').config();
+const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 
 const dialogModal = document.getElementById("dialog-modal");
 const imageContainer = document.getElementById("image-container");
 const form = document.getElementById("formContainer");
 
-const hf = new HfInference("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");
+
 
 /** show dialog on load **/
 dialogModal.show();
