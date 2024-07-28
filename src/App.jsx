@@ -5,16 +5,20 @@ import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import Navbar from './pages/Navbar';
 import './App.css';
+import { Signup } from './pages/Signup';
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
+  const isSignupPage = window.location.pathname === "/signup";
 
   return (
     <div>
       <UserProvider>
         <IdeasProvider>
           <Navbar /> {/* Add the navbar before page content */}
+          {/* <Home /> */}
           <main>{isLoginPage ? <Login /> : <Home />}</main>
+          <main>{isSignupPage ? <Signup /> : <Home />}</main>
         </IdeasProvider>
       </UserProvider>
     </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 
-export function SignUp() {
+export function Signup() {
   const user = useUser();
 
   const [email, setEmail] = useState("");
